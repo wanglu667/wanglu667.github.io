@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CREATIVE DEV | Portfolio</title>
+<title>个人作品集 | ShanNon</title>
+<meta name="description" content="大一学生，用 AI 辅助做网站。个人网站、落地页、作品集页面，接单中。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>
@@ -33,19 +34,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9000;padding:18px 40px;display:f
 .nl{display:flex;gap:28px;list-style:none}
 .nl a{color:rgba(255,255,255,.35);text-decoration:none;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-family:'Space Mono',monospace;transition:color .3s}
 .nl a:hover{color:#ccc}
+.nl a:focus-visible{outline:2px solid #739bff;outline-offset:4px;border-radius:2px}
 
 /* ===== HERO ===== */
 #hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
 #hc{position:absolute;inset:0;width:100%;height:100%}
 .hi{position:relative;z-index:10;text-align:center;padding:0 20px}
 .ht{font-family:'Space Mono',monospace;font-size:10px;color:#666;letter-spacing:4px;text-transform:uppercase;margin-bottom:14px;opacity:0;animation:fu .8s 1.6s forwards}
-.hn{font-size:clamp(48px,9vw,100px);font-weight:900;line-height:.9;letter-spacing:-3px;margin-bottom:14px;opacity:0;animation:fu 1s 1.8s forwards;color:#ccc}
+.hn{font-size:clamp(44px,9vw,100px);font-weight:900;line-height:.9;letter-spacing:-3px;margin-bottom:14px;opacity:0;animation:fu 1s 1.8s forwards;color:#ccc}
 .hn .g{color:#fff}
 .hs{font-size:clamp(13px,1.6vw,15px);color:rgba(255,255,255,.35);font-weight:200;max-width:500px;margin:0 auto 32px;line-height:1.8;opacity:0;animation:fu .8s 2s forwards}
 .hb{display:flex;gap:12px;justify-content:center;opacity:0;animation:fu .8s 2.2s forwards}
-.bt{padding:12px 24px;border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.5);text-decoration:none;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-family:'Space Mono',monospace;transition:all .3s;cursor:pointer}
+.bt{padding:12px 24px;border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.5);text-decoration:none;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-family:'Space Mono',monospace;transition:all .3s;cursor:pointer;min-height:44px;display:inline-flex;align-items:center}
 .bt:hover{border-color:rgba(255,255,255,.2);color:#fff}
 .bt.f{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.7)}
+.bt:focus-visible{outline:2px solid #739bff;outline-offset:3px}
 @keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
 /* ===== SECTIONS ===== */
@@ -125,8 +128,9 @@ section{padding:100px 40px;position:relative}
 .ci{max-width:480px;margin:0 auto}
 .ci p{color:rgba(255,255,255,.3);line-height:1.8;margin-bottom:28px;font-size:12px}
 .cl{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-.cl a{padding:9px 18px;border:1px solid rgba(255,255,255,.04);color:#fff;text-decoration:none;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-family:'Space Mono',monospace;transition:all .3s;cursor:pointer}
+.cl a{padding:9px 18px;border:1px solid rgba(255,255,255,.04);color:#fff;text-decoration:none;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-family:'Space Mono',monospace;transition:all .3s;cursor:pointer;min-height:44px;display:inline-flex;align-items:center}
 .cl a:hover{border-color:rgba(255,255,255,.2);color:#fff}
+.cl a:focus-visible{outline:2px solid #739bff;outline-offset:3px}
 
 /* ===== FOOTER ===== */
 footer{padding:24px;text-align:center;border-top:1px solid rgba(255,255,255,.03)}
@@ -142,6 +146,8 @@ footer p{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255
   section{padding:60px 20px}
   .ag{grid-template-columns:1fr;gap:28px}
   .pg{grid-template-columns:1fr}
+  .split-content{margin-left:0;width:100%}
+  .split-block{min-height:auto;padding:48px 20px}
 }
 </style>
 </head>
@@ -168,11 +174,11 @@ footer p{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255
 <section id="hero">
   <canvas id="hc"></canvas>
   <div class="hi">
-    <div class="ht">// Creative Developer & Designer</div>
-    <h1 class="hn">CREATIVE<br><span class="g">ShanNon</span></h1>
-    <p class="hs">用代码构建视觉体验，以设计驱动技术创新。<br>专注于 WebGPU、交互设计与创意编程。</p>
+    <div class="ht">// 用 AI 辅助建站的大学生</div>
+    <h1 class="hn">个人作品集<br><span class="g">ShanNon</span></h1>
+    <p class="hs">边做边学，用 AI 辅助完成个人网站、落地页与作品集页面。<br>接单中，可看案例，可聊需求。</p>
     <div class="hb">
-      <a href="#proj" class="bt f"><span>查看作品</span></a>
+      <a href="#proj" class="bt f"><span>查看案例</span></a>
       <a href="#contact" class="bt"><span>联系我</span></a>
     </div>
   </div>
@@ -186,15 +192,15 @@ footer p{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255
   </div>
   <div class="ag">
     <div class="at rv">
-      <p>你好！我是一名<em>创意前端开发者</em>，专注于将设计与技术融合，打造沉浸式的数字体验。</p>
-      <p>拥有 <em>5 年+</em> 前端开发经验，擅长 WebGL/WebGPU 图形编程、创意动画和交互式网页设计。</p>
-      <p>工作之余，我热衷于探索<em>生成艺术</em>、<em>实时渲染</em>和<em>创意编程</em>，并在开源社区分享实验作品。</p>
+      <p>你好！我是一名<em>大一学生</em>，正在用 AI 辅助的方式学习和实践建站。</p>
+      <p>这个页面是我<em>从零搭建并部署</em>的——环境配置、样式调整、部署踩坑，过程中用 AI 解决了不少问题。</p>
+      <p>目前在做：个人网站、落地页、作品集页面。<em>边做边学</em>，积累真实案例，也欢迎找我聊需求。</p>
     </div>
     <div class="stats rv">
-      <div class="s"><div class="n">5+</div><div class="l">年经验</div></div>
-      <div class="s"><div class="n">30+</div><div class="l">完成项目</div></div>
-      <div class="s"><div class="n">12</div><div class="l">开源项目</div></div>
-      <div class="s"><div class="n">5k+</div><div class="l">GitHub Stars</div></div>
+      <div class="s"><div class="n">1</div><div class="l">在建站项目</div></div>
+      <div class="s"><div class="n">3</div><div class="l">技能方向</div></div>
+      <div class="s"><div class="n">AI</div><div class="l">辅助开发</div></div>
+      <div class="s"><div class="n">接单</div><div class="l">进行中</div></div>
     </div>
   </div>
 </section>
@@ -202,23 +208,21 @@ footer p{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255
 <section id="skills">
   <div class="sh rv">
     <div class="sn">02 / SKILLS</div>
-    <h2 class="st">技术<span class="a">栈</span></h2>
+    <h2 class="st">技能<span class="a">方向</span></h2>
     <div class="sl"></div>
   </div>
   <div class="sw">
-    <div class="sc rv"><h3>前端核心</h3>
-      <div class="sr"><span class="nm">JavaScript / TS</span><div class="bar"><div class="f" data-w="95"></div></div><span class="p">95%</span></div>
-      <div class="sr"><span class="nm">React / Vue</span><div class="bar"><div class="f" data-w="92"></div></div><span class="p">92%</span></div>
-      <div class="sr"><span class="nm">CSS / Tailwind</span><div class="bar"><div class="f" data-w="90"></div></div><span class="p">90%</span></div>
+    <div class="sc rv"><h3>前端基础</h3>
+      <div class="sr"><span class="nm">HTML / CSS</span><div class="bar"><div class="f" data-w="70"></div></div><span class="p">70%</span></div>
+      <div class="sr"><span class="nm">JavaScript</span><div class="bar"><div class="f" data-w="55"></div></div><span class="p">55%</span></div>
     </div>
-    <div class="sc rv"><h3>图形与创意编程</h3>
-      <div class="sr"><span class="nm">WebGL / Three.js</span><div class="bar"><div class="f" data-w="88"></div></div><span class="p">88%</span></div>
-      <div class="sr"><span class="nm">WebGPU / WGSL</span><div class="bar"><div class="f" data-w="82"></div></div><span class="p">82%</span></div>
-      <div class="sr"><span class="nm">GLSL Shaders</span><div class="bar"><div class="f" data-w="85"></div></div><span class="p">85%</span></div>
+    <div class="sc rv"><h3>部署与工具</h3>
+      <div class="sr"><span class="nm">GitHub Pages</span><div class="bar"><div class="f" data-w="75"></div></div><span class="p">75%</span></div>
+      <div class="sr"><span class="nm">AI 工具辅助</span><div class="bar"><div class="f" data-w="80"></div></div><span class="p">80%</span></div>
     </div>
-    <div class="sc rv"><h3>工具与其他</h3>
-      <div class="sr"><span class="nm">Node.js</span><div class="bar"><div class="f" data-w="78"></div></div><span class="p">78%</span></div>
-      <div class="sr"><span class="nm">Git / CI/CD</span><div class="bar"><div class="f" data-w="85"></div></div><span class="p">85%</span></div>
+    <div class="sc rv"><h3>正在学习</h3>
+      <div class="sr"><span class="nm">响应式设计</span><div class="bar"><div class="f" data-w="60"></div></div><span class="p">60%</span></div>
+      <div class="sr"><span class="nm">交互与动效</span><div class="bar"><div class="f" data-w="50"></div></div><span class="p">50%</span></div>
     </div>
   </div>
 </section>
@@ -233,43 +237,42 @@ footer p{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255
 <section id="split-wrap">
   <div class="split-content">
     <div class="split-block">
-      <div><h3>01 / 理念</h3><h2>代码即画布</h2><p>每一行代码都是一笔色彩，每一次渲染都是一次表达。我相信技术本身就是一种艺术形式。</p></div>
+      <div><h3>01 / 从零开始</h3><h2>自己搭，自己部署</h2><p>这个页面从环境配置到 GitHub Pages 部署，全程自己走通了一遍。</p></div>
     </div>
     <div class="split-block">
-      <div><h3>02 / 实践</h3><h2>性能与美感的平衡</h2><p>在 60fps 的帧率限制下追求极致视觉体验，用最小的计算成本换取最大的感官冲击。</p></div>
+      <div><h3>02 / 踩坑与解决</h3><h2>问题解决了就记下来</h2><p>样式错乱、路径不对、部署失败——遇到问题就用 AI 定位，积累经验。</p></div>
     </div>
     <div class="split-block">
-      <div><h3>03 / 探索</h3><h2>生成艺术</h2><p>让算法创造意外之美。通过随机性、物理模拟和数学公式，发现人脑无法预设的视觉模式。</p></div>
+      <div><h3>03 / 边做边学</h3><h2>每个项目都是学习</h2><p>不追求一次做完美，先做出来，再用真实项目补技术理解。</p></div>
     </div>
     <div class="split-block">
-      <div><h3>04 / 未来</h3><h2>WebGPU 与新标准</h2><p>紧跟浏览器底层图形能力的发展，探索实时渲染、GPU 计算在 Web 上的新可能。</p></div>
+      <div><h3>04 / 接单中</h3><h2>可看案例，可聊需求</h2><p>做个人网站、落地页、作品集页面。需求可以先聊，做法可以一起定。</p></div>
     </div>
   </div>
 </section>
 
 <section id="exp">
   <div class="sh rv">
-    <div class="sn">03 / EXPERIENCE</div>
-    <h2 class="st">工作<span class="a">经历</span></h2>
+    <div class="sn">03 / TIMELINE</div>
+    <h2 class="st">做过的<span class="a">事</span></h2>
     <div class="sl"></div>
   </div>
   <div class="tl">
-    <div class="ti"><div class="dt">2022 - 至今</div><h3>高级前端工程师</h3><div class="co">某科技有限公司</div><p>负责核心产品的前端架构设计与开发，主导 WebGPU 可视化项目的技术选型和实现。</p><div class="tags"><span>WebGPU</span><span>React</span><span>TS</span></div></div>
-    <div class="ti"><div class="dt">2020 - 2022</div><h3>前端开发工程师</h3><div class="co">某互联网公司</div><p>参与电商平台前端开发，负责首页和商品详情页的性能优化，页面性能提升 40%。</p><div class="tags"><span>Vue.js</span><span>Webpack</span></div></div>
-    <div class="ti"><div class="dt">2019 - 2020</div><h3>初级前端开发</h3><div class="co">某创业公司</div><p>参与官网和后台管理系统的前端开发，实践响应式设计和组件化开发。</p><div class="tags"><span>HTML/CSS</span><span>JavaScript</span></div></div>
+    <div class="ti"><div class="dt">现在</div><h3>用 AI 辅助建站</h3><div class="co">个人项目 / 接单</div><p>用 AI 辅助做个人网站、落地页、作品集页面，边做边学，积累真实案例。</p><div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>AI 辅助</span></div></div>
+    <div class="ti"><div class="dt">从零开始</div><h3>搭建并部署这个页面</h3><div class="co">GitHub Pages</div><p>环境配置、样式调整、部署踩坑，过程中用 AI 解决了不少问题。</p><div class="tags"><span>GitHub Pages</span><span>Canvas</span><span>CSS</span></div></div>
   </div>
 </section>
 
 <section id="proj">
   <div class="sh rv">
-    <div class="sn">04 / PROJECTS</div>
-    <h2 class="st">精选<span class="a">作品</span></h2>
+    <div class="sn">04 / CASES</div>
+    <h2 class="st">精选<span class="a">案例</span></h2>
     <div class="sl"></div>
   </div>
   <div class="pg">
-    <div class="pc rv"><div class="v"><canvas class="pcc" data-t="g"></canvas></div><div class="info"><div class="tp">WebGPU</div><h3>Galaxy Simulator</h3><p>粒子实时模拟的星系生成器，支持动态参数调节。</p><div class="tech"><span>WebGPU</span><span>WGSL</span><span>TS</span></div></div></div>
-    <div class="pc rv"><div class="v"><canvas class="pcc" data-t="w"></canvas></div><div class="info"><div class="tp">创意编程</div><h3>Fluid Waves</h3><p>基于物理的流体波动模拟，实现水面效果和光影交互。</p><div class="tech"><span>WebGL</span><span>GLSL</span></div></div></div>
-    <div class="pc rv"><div class="v"><canvas class="pcc" data-t="m"></canvas></div><div class="info"><div class="tp">交互装置</div><h3>Morph Sculpture</h3><p>可交互的 3D 变形雕塑，手势驱动几何体实时形变。</p><div class="tech"><span>Three.js</span><span>React</span></div></div></div>
+    <div class="pc rv"><div class="v"><canvas class="pcc" data-t="g"></canvas></div><div class="info"><div class="tp">这个页面</div><h3>个人作品集</h3><p>从零搭建并部署，Canvas 动画、滚动交互、AI 辅助开发。</p><div class="tech"><span>HTML</span><span>CSS</span><span>JS</span><span>GitHub Pages</span></div></div></div>
+    <div class="pc rv"><div class="v"><canvas class="pcc" data-t="w"></canvas></div><div class="info"><div class="tp">在建</div><h3>落地页</h3><p>为客户和产品做的单页展示，正在实践中积累经验。</p><div class="tech"><span>HTML</span><span>CSS</span></div></div></div>
+    <div class="pc rv"><div class="v"><canvas class="pcc" data-t="m"></canvas></div><div class="info"><div class="tp">在建</div><h3>个人网站</h3><p>更完整的内容展示和交互，持续打磨中。</p><div class="tech"><span>JavaScript</span><span>Git</span></div></div></div>
   </div>
 </section>
 
@@ -280,16 +283,9 @@ footer p{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255
     <div class="sl" style="margin:12px auto 0"></div>
   </div>
   <div class="ci rv">
-    <p>如果你有有趣的项目想法，或者想聊聊创意编程和技术，欢迎联系我。</p>
-    <div class="cl">
-      <a href="mailto:wujinxuan22@gmail.com">Email</a>
-      <a href="#">GitHub</a>
-      <a href="https://instagram.com/crab.86979312" target="_blank">IG</a>
-      <a href="#">WeChat</a>
-    </div>
-    <div style="margin-top:20px;font-size:10px;color:rgba(255,255,255,.18);font-family:'Space Mono',monospace;letter-spacing:1px">
-      IG: crab.86979312 &nbsp;|&nbsp; WeChat: 15640958467
-    </div>
+    <p>如果你需要个人网站、落地页或作品集页面，可以联系我。先聊需求，再动手。</p>
+    <div style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:2px;color:#bbb;margin-bottom:6px">微信：Uneternity21</div>
+    <div style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:2px;color:#bbb">手机：19274117190</div>
   </div>
 </section>
 
@@ -401,16 +397,12 @@ footer p{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255
     var tr=trigger.getBoundingClientRect();
     var sr=sw.getBoundingClientRect();
     var h=window.innerHeight;
-    
-    // 完全不在视图内时隐藏
     if(tr.bottom<0&&sr.bottom<0){
       sb.style.opacity='0';
       sc.style.opacity='0';
       sc.style.width='100vw';
       return;
     }
-    
-    // 进入 trigger 区域 - 全屏渐显
     var enterProgress=Math.max(0,Math.min(1,1-tr.top/(h*1.5)));
     if(enterProgress<0.8){
       sb.style.opacity=enterProgress/0.8;
@@ -418,8 +410,6 @@ footer p{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255
       sc.style.width='100vw';
       return;
     }
-    
-    // 全屏到分屏过渡 - 全屏渐隐同时分屏渐显
     var transProgress=(enterProgress-0.8)/0.2;
     sb.style.opacity=1-transProgress;
     sc.style.width=(100-transProgress*50)+'vw';
