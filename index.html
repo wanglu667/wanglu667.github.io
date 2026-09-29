@@ -41,7 +41,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9000;padding:18px 40px;display:f
 #hc{position:absolute;inset:0;width:100%;height:100%}
 .hi{position:relative;z-index:10;text-align:center;padding:0 20px}
 .ht{font-family:'Space Mono',monospace;font-size:10px;color:#666;letter-spacing:4px;text-transform:uppercase;margin-bottom:14px;opacity:0;animation:fu .8s 1.6s forwards}
-.hn{font-size:clamp(44px,9vw,100px);font-weight:900;line-height:.9;letter-spacing:-3px;margin-bottom:14px;opacity:0;animation:fu 1s 1.8s forwards;color:#ccc}
+.hn{font-size:clamp(34px,9vw,100px);font-weight:900;line-height:.9;letter-spacing:-.02em;margin-bottom:14px;opacity:0;animation:fu 1s 1.8s forwards;color:#ccc;overflow-wrap:break-word}
 .hn .g{color:#fff}
 .hs{font-size:clamp(13px,1.6vw,15px);color:rgba(255,255,255,.35);font-weight:200;max-width:500px;margin:0 auto 32px;line-height:1.8;opacity:0;animation:fu .8s 2s forwards}
 .hb{display:flex;gap:12px;justify-content:center;opacity:0;animation:fu .8s 2.2s forwards}
@@ -140,14 +140,27 @@ footer p{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255
 .rv{opacity:0;transform:translateY(24px);transition:all .6s}
 .rv.vis{opacity:1;transform:translateY(0)}
 
+.spacer{height:80vh;background:#0a0a14}
+
 @media(max-width:768px){
   nav{padding:14px 20px}
   .nl{display:none}
   section{padding:60px 20px}
   .ag{grid-template-columns:1fr;gap:28px}
   .pg{grid-template-columns:1fr}
-  .split-content{margin-left:0;width:100%}
-  .split-block{min-height:auto;padding:48px 20px}
+  /* 分屏在窄屏保持原版：左侧固定画布 + 右侧半宽文字。
+     只把内边距收窄，让半屏内的文字少一些横向浪费。 */
+  .split-block{padding:48px 6%}
+}
+
+@media(max-width:400px){
+  .hn{font-size:34px;letter-spacing:-1.5px}
+  .hs{font-size:12.5px;line-height:1.75}
+  .hb{flex-direction:column;align-items:center}
+  .bt{width:100%;max-width:240px;justify-content:center}
+  .s .n{font-size:21px}
+  .sr .nm{width:84px;font-size:9.5px}
+  .sr .p{width:26px;font-size:8.5px}
 }
 </style>
 </head>
@@ -227,7 +240,7 @@ footer p{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255
   </div>
 </section>
 
-<div style="height:80vh;background:#0a0a14"></div>
+<div class="spacer"></div>
 
 <section id="split-trigger"></section>
 
@@ -303,7 +316,12 @@ footer p{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255
   // Hero Canvas - simple particle galaxy
   var hc=document.getElementById('hc');
   var cx=hc.getContext('2d');
-  function rs(){hc.width=hc.clientWidth;hc.height=hc.clientHeight}
+  function rs(){
+    var d=Math.min(window.devicePixelRatio||1,2);
+    hc.width=hc.clientWidth*d;
+    hc.height=hc.clientHeight*d;
+    cx.setTransform(d,0,0,d,0,0);
+  }
   rs();window.addEventListener('resize',rs);
 
   var pts=[];
@@ -313,7 +331,8 @@ footer p{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255
     pts.push({ang:ang,r:r,sp:.0003+Math.random()*.0002,sz:1+Math.random()*1.5,op:.2+Math.random()*.3});
   }
   (function draw(){
-    var w=hc.width,h=hc.height;
+    // 变换矩阵已按 DPR 缩放，这里必须用 CSS 像素尺寸
+    var w=hc.clientWidth,h=hc.clientHeight;
     cx.fillStyle='rgba(8,8,14,0.15)';
     cx.fillRect(0,0,w,h);
     var cx2=w/2,cy2=h/2;
@@ -335,8 +354,14 @@ footer p{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255
   for(var c=0;c<pccs.length;c++){
     (function(canvas){
       var ctx=canvas.getContext('2d');
-      function resize(){canvas.width=canvas.clientWidth*2;canvas.height=canvas.clientHeight*2;ctx.scale(2,2)}
+      // 每次 resize 必须先重置变换，否则 scale(2,2) 会反复叠加
+      function resize(){
+        canvas.width=canvas.clientWidth*2;
+        canvas.height=canvas.clientHeight*2;
+        ctx.setTransform(2,0,0,2,0,0);
+      }
       resize();
+      window.addEventListener('resize',resize);
       var tp=canvas.dataset.t;
       var t=Math.random()*100;
       (function dr(){
@@ -391,7 +416,18 @@ footer p{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255
   function srs(){sc.width=window.innerWidth;sc.height=window.innerHeight}
   srs();window.addEventListener('resize',srs);
   var sp=[];for(var i=0;i<120;i++){var a=Math.random()*Math.PI*2,r=50+Math.random()*250;sp.push({a:a,r:r,sp:.001+Math.random()*.002,sz:1+Math.random()*1.8,op:.15+Math.random()*.35})}
-  (function sd(){var w=sc.width,h=sc.height;sx.fillStyle='rgba(8,8,14,0.1)';sx.fillRect(0,0,w,h);var cx2=w/2,cy2=h/2;for(var i=0;i<sp.length;i++){var p=sp[i];p.a+=p.sp;var px=cx2+Math.cos(p.a)*p.r,py=cy2+Math.sin(p.a)*p.r*.7;sx.fillStyle='rgba(180,180,180,'+p.op+')';sx.beginPath();sx.arc(px,py,p.sz,0,Math.PI*2);sx.fill()}requestAnimationFrame(sd)})();
+  (function sd(){
+    var w=sc.width,h=sc.height;
+    sx.fillStyle='rgba(8,8,14,0.1)';sx.fillRect(0,0,w,h);
+    var cx2=w/2,cy2=h/2;
+    for(var i=0;i<sp.length;i++){
+      var p=sp[i];p.a+=p.sp;
+      var px=cx2+Math.cos(p.a)*p.r,py=cy2+Math.sin(p.a)*p.r*.7;
+      sx.fillStyle='rgba(180,180,180,'+p.op+')';
+      sx.beginPath();sx.arc(px,py,p.sz,0,Math.PI*2);sx.fill();
+    }
+    requestAnimationFrame(sd);
+  })();
 
   function handleSplit(){
     var tr=trigger.getBoundingClientRect();
@@ -415,7 +451,8 @@ footer p{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255
     sc.style.width=(100-transProgress*50)+'vw';
     sc.style.opacity='1';
   }
-  window.addEventListener('scroll',handleSplit);
+  window.addEventListener('scroll',handleSplit,{passive:true});
+  window.addEventListener('resize',handleSplit);
 })();
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
